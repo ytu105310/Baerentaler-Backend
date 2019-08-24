@@ -14,45 +14,13 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-    console.log(req.body.fname);
-    res = mongoDB.findAll(req, res);
+    res = mongoDB.findAllUsers(req, res);
     return res;
-});
-
-app.get('/home', (req, res) => {
-    console.log(req.body.abos)
-    res.sendfile("view/home.html");
-});
-
-app.get('/abos', (req, res) => {
-    res.sendfile("viewl/abos.html");
 });
 
 app.post('/abos', (req, res) => {
-    console.log('Abo page');
-    const dummyData = [
-        {
-          key: 1,
-          title: "Rüebli Abo",
-          hersteller: "Max Muster",
-          preis: "25.00 Taler"
-        },
-        {
-          key: 2,
-          title: "Sunneschiin Früchte",
-          hersteller: "Hans Muster",
-          preis: "55.00 Taler"
-        },
-        {
-          key: 3,
-          title: "Blumen Mittel",
-          hersteller: "Brigitte Muster",
-          preis: "14.00 Taler"
-        }
-    ]
-    res.writeHead(200, {'Content-Type': 'application/json'})
-    res.end(JSON.stringify(dummyData))
-    return res;
+  res = mongoDB.findAllAbos(req, res);
+  return res;
 });
 
 app.post('/produkte', (req, res) => {

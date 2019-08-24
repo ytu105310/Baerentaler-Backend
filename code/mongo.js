@@ -12,7 +12,14 @@ db.open(function(err, db) {
         db.collection('benutzer', {strict:true}, function(err, collection) {
             if (err) {
                 console.log("The 'benutzer' collection doesn't exist. Creating it with sample data...");
-                populateDB();
+                generateUsers();
+            }
+        });
+
+        db.collection('abos', {strict:true}, function(err, collection) {
+            if (err) {
+                console.log("The 'abos' collection doesn't exist. Creating it with sample data...");
+                generateAbos();
             }
         });
     }
@@ -28,13 +35,22 @@ db.open(function(err, db) {
     });
 }; */
 
-findAll = function(req, res) {
+findAllUsers = function(req, res) {
     db.collection('benutzer', function(err, collection) {
         collection.find({}).toArray(function(err, items) {
             res.send(items);
         });
     });
 };
+
+findAllAbos = function(req, res) {
+    db.collection('abos', function(err, collection) {
+        collection.find({}).toArray(function(err, items) {
+            res.send(items);
+        });
+    });
+};
+
 /* 
 exports.addWine = function(req, res) {
     var wine = req.body;
@@ -87,7 +103,7 @@ exports.deleteWine = function(req, res) {
 /*--------------------------------------------------------------------------------------------------------------------*/
 // Populate database with sample data -- Only used once: the first time the application is started.
 // You'd typically not find this code in a real-life app, since the database would already exist.
-var populateDB = function() {
+var generateUsers = function() {
 
     var benutzer = [
     {
@@ -106,7 +122,38 @@ var populateDB = function() {
     db.collection('benutzer', function(err, collection) {
         collection.insert(benutzer, {safe:true}, function(err, result) {});
     });
-
 };
 
-module.exports.findAll = findAll;
+var generateAbos = function() {
+    var abos = [{
+        name: 'Karotten',
+        producer: 'Max Knecht, Emmental',
+        price: '5BT pro kg',
+        everyXthWeek: '2',
+        amount: '200g',
+        imageUrl: 'https://www.gesundheit.de/sites/default/files/styles/crop_content/public/2016-03/karotte.jpg?itok=MrGiGvSb'
+      },
+      {
+        name: 'Eier',
+        producer: 'Miriam Schmid, Bern',
+        price: '2BT for 2',
+        everyXthWeek: '2',
+        amount: '20g',
+        imageUrl: 'https://img.utopia.de/dMHQXBCqXgwwiHdDAers9jDua_0=/640x300/https://utopia.de/app/uploads/2019/03/eier-kaufberatung-wsiraphol1603181280x720.jpg'
+      },
+      {
+        name: 'Brot',
+        producer: 'John Doe, Wohlen',
+        price: '3BT pro kg',
+        everyXthWeek: '1',
+        amount: '145g',
+        imageUrl: 'https://www.kochenundkueche.com/sites/default/files/styles/medium/public/redaktionsrezept_images/backprofi_buschenschank-brot-aufgeschnitten-web.jpg?itok=qitmNXqG'
+    }];
+
+    db.collection('abos', function(err, collection) {
+        collection.insert(abos, {safe:true}, function(err, result) {});
+    });
+};
+
+module.exports.findAllUsers = findAllUsers;
+module.exports.findAllAbos = findAllAbos;
