@@ -1,0 +1,9 @@
+DROP TABLE Kunde_Abo;
+DROP TABLE Kunde;
+DROP TABLE Abo_Produkt;
+DROP TABLE Abo;
+DROP TABLE Hersteller_Produkt;
+DROP TABLE Hersteller;
+DROP TABLE Produkt;
+DROP TABLE Einheit;
+DROP TABLE Benutzer;

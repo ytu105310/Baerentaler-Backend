@@ -5,9 +5,7 @@ const connect = require('./database');
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
-    connect.getFromDB()
+    connect.runDBFlow();
 });
 
-connect.connect();
-connect.getFromDB();
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Listening on port ${port}!`));

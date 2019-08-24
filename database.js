@@ -1,43 +1,43 @@
-var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('bernHackt.db');
+let sqlite3 = require('sqlite3').verbose();
+let query = require('./SQL/createAllTables');
+
+function createDb() {
+    console.log("Create DB");
+    db = new sqlite3.Database('bernHackt.sqlite3', createTables);
+}
 
 
-connect = function () {
-    try {
+function createTables() {
+    console.log("Create all tables");
+    db.run(query.createAllTables, insertDummyData);
+}
 
-        db.connect = (function () {
-            /*
-            db.run("CREATE TABLE lorem (info TEXT)");
+function insertDummyData() {
+    console.log("Insert data");
+    var stmt = db.prepare("INSERT INTO Benutzer VALUES (?,?,?,?,?)");
+    stmt.run(1, "Max", "Muster", '2007-01-01 10:00:00', 0);
+    stmt.finalize(readAllRows);
+}
 
-            var stmt = db.prepare("INSERT INTO lorem VALUES (?)");
-            for (var i = 0; i < 10; i++) {
-                stmt.run("Ipsum " + i);
-            }
-            stmt.finalize();
-
-            db.each("SELECT rowid AS id, info FROM lorem", function (err, row) {
-                console.log(row.id + ": " + row.info);
-            });
-            */
+function readAllRows() {
+    console.log("Read Benutzer table");
+    db.all("SELECT * FROM Benutzer", function(err, rows) {
+        rows.forEach(function (row) {
+            console.log(row.vorname);
         });
-    } catch (e) {
-        console.log(e);
-    }
-};
+        closeDb();
+    });
+}
 
+function closeDb() {
+    console.log("closeDb");
+    db.close();
+}
 
-get = function () {
-    console.log("here")
-    try {
-        var count = db.run("SELECT * FROM lorem");
-        console.log(count)
-    } catch (e) {
-        console.log(e)
-    }
-};
+function runDBFlow() {
+    createDb();
+}
 
-
-module.exports.connect = connect;
-module.exports.getFromDB = get;
+module.exports.runDBFlow = runDBFlow;
 
 
