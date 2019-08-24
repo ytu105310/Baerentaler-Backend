@@ -1,25 +1,29 @@
 const express = require('express');
-const server = express();
+const app = express();
+const port = process.env.PORT || 3000;
 const connect = require('./database');
-const port = process.env.PORT || 8000;
 
-server.get('/', (req, res) => {
+let server = require('http').Server(app);
+
+app.get('/', (req, res) => {
     res.send('Login');
     connect.runDBFlow();
 });
 
-server.get('/Home', (req, res) => {
+app.get('/Home', (req, res) => {
     res.send('Home!');
+    connect.getFromDB()
 });
 
-server.get('/Abos', (req, res) => {
+app.get('/Abos', (req, res) => {
     res.send('Abos');
 });
 
-server.get('/Produkte', (req, res) => {
+app.get('/Abo/Hersteller/Produkte', (req, res) => {
     res.send('Produkte!');
 });
 
-server.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
+server.listen(port, () => {
+    console.log("App is running on port " + port);
+});
 
