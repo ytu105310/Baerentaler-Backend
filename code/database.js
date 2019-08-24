@@ -8,7 +8,7 @@ function createDb() {
 
 function dropAllTables() {
     console.log("Drop tables");
-    db.run(query.dropAllTables);
+    db.run(query.dropAllTables, createTables());
 }
 
 function createTables() {
