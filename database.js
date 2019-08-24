@@ -3,9 +3,13 @@ let query = require('./SQL/createAllTables');
 
 function createDb() {
     console.log("Create DB");
-    db = new sqlite3.Database('bernHackt.sqlite3', createTables);
+    db = new sqlite3.Database('bernHackt.sqlite3', dropAllTables);
 }
 
+function dropAllTables() {
+    console.log("Drop tables");
+    db.run(query.dropAllTables, createTables);
+}
 
 function createTables() {
     console.log("Create all tables");

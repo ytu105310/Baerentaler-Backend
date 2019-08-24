@@ -20,6 +20,6 @@ server.get('/Produkte', (req, res) => {
     res.send('Produkte!');
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+server.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 

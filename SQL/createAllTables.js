@@ -83,15 +83,15 @@ module.exports = Object.freeze({
     FOREIGN KEY (abo_id) REFERENCES Abo (abo_id) 
     ON DELETE CASCADE ON UPDATE NO ACTION
     );`,
-    
+
     dropAllTables: 
-    `DROP TABLE Kunde_Abo;
-    DROP TABLE Kunde;
-    DROP TABLE Abo_Produkt;
-    DROP TABLE Abo;
-    DROP TABLE Hersteller_Produkt;
-    DROP TABLE Hersteller;
-    DROP TABLE Produkt;
-    DROP TABLE Einheit;
-    DROP TABLE Benutzer;`
+    `DROP TABLE IF EXISTS Kunde_Abo;
+    DROP TABLE IF EXISTS Kunde;
+    DROP TABLE IF EXISTS Abo_Produkt;
+    DROP TABLE IF EXISTS Abo;
+    DROP TABLE IF EXISTS Hersteller_Produkt;
+    DROP TABLE IF EXISTS Hersteller;
+    DROP TABLE IF EXISTS Produkt;
+    DROP TABLE IF EXISTS Einheit;
+    DROP TABLE IF EXISTS Benutzer;`
 });
