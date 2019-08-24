@@ -5,30 +5,30 @@ const connect = require('./database');
 
 var bodyParser = require("body-parser");
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    res.sendfile("index.html");
-    console.log("Your logged in!")
+    res.sendfile("view/index.html");
+    console.log("Your logged in!");
 });
 
 app.post('/login', (req, res) => {
-    console.log(req.body.fname)
+    console.log(req.body.fname);
     res.redirect('/home')
 });
 
 app.get('/home', (req, res) => {
     console.log(req.body.abos)
-    res.sendfile("home.html");
+    res.sendfile("view/home.html");
 });
 
 app.get('/abos', (req, res) => {
-    res.sendfile("abos.html");
+    res.sendfile("viewl/abos.html");
 });
 
 app.post('/abos', (req, res) => {
-    console.log('Abo page')
+    console.log('Abo page');
     const dummyData = [
         {
           key: 1,
@@ -48,9 +48,8 @@ app.post('/abos', (req, res) => {
           hersteller: "Brigitte Muster",
           preis: "14.00 Taler"
         }
-      ]
-    
-    res.writeHead(200, { 'Content-Type': 'application/json' })
+    ]
+    res.writeHead(200, {'Content-Type': 'application/json'})
     res.end(JSON.stringify(dummyData))
     return res;
 });
