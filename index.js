@@ -1,7 +1,13 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const app = express();
+const port = 3000;
+const connect = require('./database');
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+    connect.getFromDB()
+});
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+connect.connect();
+connect.getFromDB();
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
