@@ -4,8 +4,17 @@ const port = process.env.PORT || 3000;
 const connect = require('./database');
 
 app.get('/', (req, res) => {
-    res.send('Login');
+    res.send('Home');
     connect.runDBFlow();
+});
+
+app.get('/Login', (req, res) => {
+    res.send('Login');
+    console.log("Your logged in!")
+});
+
+app.post('/Login', (req, res) => {
+    return res = "Logged in"
 });
 
 /*app.get('/Home', (req, res) => {
