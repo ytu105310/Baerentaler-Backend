@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-const connect = require('./database');
+const mongoDB = require('./mongo');
 
 var bodyParser = require("body-parser");
 
@@ -15,7 +15,8 @@ app.get('/', (req, res) => {
 
 app.post('/login', (req, res) => {
     console.log(req.body.fname);
-    res.redirect('/home')
+    res = mongoDB.findAll(req, res);
+    return res;
 });
 
 app.get('/home', (req, res) => {
