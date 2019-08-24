@@ -3,36 +3,34 @@ const app = express();
 const port = process.env.PORT || 3000;
 const connect = require('./database');
 
-app.get('/', (req, res) => {
-    res.send('Home');
-    connect.runDBFlow();
-});
+var bodyParser = require("body-parser");
 
-app.get('/Login', (req, res) => {
-    res.send('Login');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+    res.sendfile("index.html");
     console.log("Your logged in!")
 });
 
-app.post('/Login', (req, res) => {
-    return res = "Logged in"
+app.post('/login', (req, res) => {
+    console.log(req.body.fname)
+    res.redirect('/home')
 });
 
-/*app.get('/Home', (req, res) => {
-    res.send('Home!');
-    connect.getFromDB()
+app.get('/home', (req, res) => {
+    console.log(req.body.abos)
+    res.sendfile("home.html");
 });
 
-app.get('/Abos', (req, res) => {
-    res.send('Abos');
+app.get('/abos', (req, res) => {
+    res.sendfile("abos.html");
 });
 
-app.get('/Abo/Hersteller/Produkte', (req, res) => {
-    res.send('Produkte!');
+app.post('/abos', (req, res) => {
+    console.log('Abo page')
+    res.redirect('/abos')
 });
-
-server.listen(port, () => {
-    console.log("App is running on port " + port);
-*/
 
 var server = app.listen(port, function () {
     var port = server.address().port;
