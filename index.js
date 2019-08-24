@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const connect = require('./database');
 
 let server = require('http').Server(app);
+
 app.get('/', (req, res) => {
     res.send('Login');
     connect.runDBFlow();
@@ -24,4 +25,6 @@ app.get('/Abo/Hersteller/Produkte', (req, res) => {
 
 connect.connect();
 connect.getFromDB();
-server.listen(port, () => console.log(`Example app listening on port ${port}!`));
+server.listen(port, () => {
+    console.log("App is running on port " + port);
+});
