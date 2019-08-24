@@ -6,7 +6,7 @@ const connect = require('./database');
 let server = require('http').Server(app);
 app.get('/', (req, res) => {
     res.send('Login');
-    connect.getFromDB()
+    connect.runDBFlow();
 });
 
 app.get('/Home', (req, res) => {
