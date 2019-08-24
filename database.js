@@ -19,18 +19,17 @@ function createTables() {
 function insertDummyData() {
     console.log("Insert data");
     var stmt = db.prepare("INSERT INTO Benutzer VALUES (?,?,?,?,?)");
-    stmt.run(1, "Max", "Muster", '2007-01-01 10:00:00', 0);
+    //  stmt.run(1, "Max", "Muster", '2007-01-01 10:00:00', 0);
     stmt.finalize(readAllRows);
 }
 
 function readAllRows() {
     console.log("Read Benutzer table");
-    db.all("SELECT * FROM Benutzer", function(err, rows) {
+    /*db.all("SELECT * FROM Benutzer", function (err, rows) {
         rows.forEach(function (row) {
             console.log(row.vorname);
-        });
-        closeDb();
-    });
+        }); */
+    closeDb();
 }
 
 function closeDb() {
