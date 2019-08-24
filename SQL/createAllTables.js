@@ -1,17 +1,17 @@
 module.exports = Object.freeze({
-    createAllTables: 
-    `CREATE TABLE Benutzer (
+    createAllTables:
+    `CREATE TABLE Einheit (
+    einheit_id INTEGER PRIMARY KEY,
+    einheitsname TEXT NOT NULL,
+    abkuerzung TEXT
+    );
+    
+    CREATE TABLE Benutzer (
     benutzer_id INTEGER PRIMARY KEY,
     vorname TEXT NOT NULL,
     nachname TEXT NOT NULL,
     geburtsdatum DATE NOT NULL,
     anzahlTaler INTEGER DEFAULT 0 NOT NULL
-    );
-
-    CREATE TABLE Einheit (
-    einheit_id INTEGER PRIMARY KEY,
-    einheitsname TEXT NOT NULL,
-    abkuerzung TEXT
     );
 
     CREATE TABLE Produkt (
@@ -84,14 +84,14 @@ module.exports = Object.freeze({
     ON DELETE CASCADE ON UPDATE NO ACTION
     );`,
 
-    dropAllTables: 
-    `DROP TABLE IF EXISTS Kunde_Abo;
+    dropAllTables:
+        `DROP TABLE IF EXISTS Benutzer;
+        DROP TABLE IF EXISTS Kunde_Abo;
     DROP TABLE IF EXISTS Kunde;
     DROP TABLE IF EXISTS Abo_Produkt;
     DROP TABLE IF EXISTS Abo;
     DROP TABLE IF EXISTS Hersteller_Produkt;
     DROP TABLE IF EXISTS Hersteller;
     DROP TABLE IF EXISTS Produkt;
-    DROP TABLE IF EXISTS Einheit;
-    DROP TABLE IF EXISTS Benutzer;`
+    DROP TABLE IF EXISTS Einheit;`
 });
