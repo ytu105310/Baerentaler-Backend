@@ -10,14 +10,14 @@ TBD
 
 ### Dependencies
 
-* NODE
+* Node.JS
 * NPM
+* mongoDb
 
 ### Installing
 
 ```
 npm init
-npm install nodemon -g
 npm install express -g
 npm install
 ```

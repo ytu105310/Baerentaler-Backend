@@ -22,6 +22,13 @@ db.open(function(err, db) {
                 generateAbos();
             }
         });
+
+        db.collection('products', {strict:true}, function(err, collection) {
+            if (err) {
+                console.log("The 'products' collection doesn't exist. Creating it with sample data...");
+                generateProducts();
+            }
+        });
     }
 });
 
@@ -45,6 +52,14 @@ findAllUsers = function(req, res) {
 
 findAllAbos = function(req, res) {
     db.collection('abos', function(err, collection) {
+        collection.find({}).toArray(function(err, items) {
+            res.send(items);
+        });
+    });
+};
+
+findAllProducts = function(req, res) {
+    db.collection('products', function(err, collection) {
         collection.find({}).toArray(function(err, items) {
             res.send(items);
         });
@@ -131,7 +146,6 @@ var generateAbos = function() {
         price: '5BT pro kg',
         everyXthWeek: '2',
         amount: '200g',
-        imageUrl: 'https://www.gesundheit.de/sites/default/files/styles/crop_content/public/2016-03/karotte.jpg?itok=MrGiGvSb'
       },
       {
         name: 'Eier',
@@ -139,7 +153,6 @@ var generateAbos = function() {
         price: '2BT for 2',
         everyXthWeek: '2',
         amount: '20g',
-        imageUrl: 'https://img.utopia.de/dMHQXBCqXgwwiHdDAers9jDua_0=/640x300/https://utopia.de/app/uploads/2019/03/eier-kaufberatung-wsiraphol1603181280x720.jpg'
       },
       {
         name: 'Brot',
@@ -147,7 +160,6 @@ var generateAbos = function() {
         price: '3BT pro kg',
         everyXthWeek: '1',
         amount: '145g',
-        imageUrl: 'https://www.kochenundkueche.com/sites/default/files/styles/medium/public/redaktionsrezept_images/backprofi_buschenschank-brot-aufgeschnitten-web.jpg?itok=qitmNXqG'
     }];
 
     db.collection('abos', function(err, collection) {
@@ -155,5 +167,31 @@ var generateAbos = function() {
     });
 };
 
+var generateProducts = function() {
+    var products = [{
+        name: 'Karotten',
+        producer: 'Max Knecht, Emmental',
+        price: '5BT pro kg',
+        imageUrl: 'https://www.gesundheit.de/sites/default/files/styles/crop_content/public/2016-03/karotte.jpg?itok=MrGiGvSb'
+      },
+      {
+        name: 'Eier',
+        producer: 'Miriam Schmid, Bern',
+        price: '2BT for 2',
+        imageUrl: 'https://img.utopia.de/dMHQXBCqXgwwiHdDAers9jDua_0=/640x300/https://utopia.de/app/uploads/2019/03/eier-kaufberatung-wsiraphol1603181280x720.jpg'
+      },
+      {
+        name: 'Brot',
+        producer: 'John Doe, Wohlen',
+        price: '3BT pro kg',
+        imageUrl: 'https://www.kochenundkueche.com/sites/default/files/styles/medium/public/redaktionsrezept_images/backprofi_buschenschank-brot-aufgeschnitten-web.jpg?itok=qitmNXqG'
+    }];
+
+    db.collection('products', function(err, collection) {
+        collection.insert(products, {safe:true}, function(err, result) {});
+    });
+};
+
 module.exports.findAllUsers = findAllUsers;
 module.exports.findAllAbos = findAllAbos;
+module.exports.findAllProducts = findAllProducts;
