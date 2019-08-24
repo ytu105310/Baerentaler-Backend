@@ -4,8 +4,20 @@ const port = 3000;
 const connect = require('./database');
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Login');
     connect.getFromDB()
+});
+
+app.get('/Home', (req, res) => {
+    res.send('Home!');
+});
+
+app.get('/Abos', (req, res) => {
+    res.send('Abos');
+});
+
+app.get('/Produkte', (req, res) => {
+    res.send('Produkte!');
 });
 
 connect.connect();
