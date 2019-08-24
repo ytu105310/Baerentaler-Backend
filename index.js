@@ -3,14 +3,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 const connect = require('./database');
 
-let server = require('http').Server(app);
-
 app.get('/', (req, res) => {
     res.send('Login');
     connect.runDBFlow();
 });
 
-app.get('/Home', (req, res) => {
+/*app.get('/Home', (req, res) => {
     res.send('Home!');
     connect.getFromDB()
 });
@@ -25,6 +23,9 @@ app.get('/Abo/Hersteller/Produkte', (req, res) => {
 
 connect.connect();
 connect.getFromDB();
-server.listen(port, () => {
-    console.log("App is running on port " + port);
+*/
+
+var server = app.listen(port, function () {
+    var port = server.address().port;
+    console.log("Express is working on port " + port);
 });
