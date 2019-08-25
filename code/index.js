@@ -5,24 +5,40 @@ const mongoDB = require('./mongo');
 
 var bodyParser = require("body-parser");
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('Connection works!'));
 
-app.post('/login', (req, res) => {
+app.get('/login', (req, res) => {
     res = mongoDB.findAllUsers(req, res);
     return res;
 });
 
-app.post('/abos', (req, res) => {
-  res = mongoDB.findAllAbos(req, res);
-  return res;
+app.get('/abos', (req, res) => {
+    res = mongoDB.findAllAbos(req, res);
+    return res;
 });
 
-app.post('/products', (req, res) => {
-  res = mongoDB.findAllProducts(req, res);
-  return res;
+app.get('/products', (req, res) => {
+    res = mongoDB.findAllProducts(req, res);
+    return res;
+});
+
+app.get('/transactions', (req, res) => {
+    res = mongoDB.findAllTransactions(req, res);
+    return res;
+});
+
+app.get('/carbonSavings', (req, res) => {
+    res = mongoDB.findCarbonSavings(req, res);
+    return res;
+});
+
+app.get('/products/:producerId', (req, res) => {
+    var producerId = req.params.producerId;
+    res = mongoDB.findProductsByProducerId(req, res, producerId);
+    return res;
 });
 
 var server = app.listen(port, function () {
