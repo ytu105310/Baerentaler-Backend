@@ -3,9 +3,8 @@
 BärnHäckt BärenBatzen
 
 ## Description
-
-Our solution to the BEKB challenge
-
+This is our backend solution for the BEKB-Challenge. The backend is developed for a frontend which is based on React-Native.
+The framework we used is ExpressJS.
 ## Getting Started
 
 ### Dependencies
@@ -25,6 +24,3 @@ npm install
 ```
 npm start
 ```
-
-### Testing
-TBD
