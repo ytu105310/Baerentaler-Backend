@@ -98,7 +98,7 @@ findCarbonSavings = function (req, res) {
 
 findProductsByProducerId = function (req, res, producerId) {
     db.collection('products', function (err, collection) {
-        collection.find({}).toArray(function (err, items) {
+        collection.find({producerId: producerId}).toArray(function (err, items) {
             res.send(items);
         });
     });
@@ -208,18 +208,21 @@ var generateAbos = function () {
 var generateProducts = function () {
     var products = [{
         name: 'Karotten',
+        producerId: '01',
         producer: 'Max Knecht, Emmental',
         price: '5BT pro kg',
         imageUrl: 'https://www.gesundheit.de/sites/default/files/styles/crop_content/public/2016-03/karotte.jpg?itok=MrGiGvSb'
     },
     {
         name: 'Eier',
+        producerId: '02',
         producer: 'Miriam Schmid, Bern',
         price: '1BT pro Stück',
         imageUrl: 'https://img.utopia.de/dMHQXBCqXgwwiHdDAers9jDua_0=/640x300/https://utopia.de/app/uploads/2019/03/eier-kaufberatung-wsiraphol1603181280x720.jpg'
     },
     {
         name: 'Brot',
+        producerId: '03',
         producer: 'John Doe, Wohlen',
         price: '3BT pro kg',
         imageUrl: 'https://www.kochenundkueche.com/sites/default/files/styles/medium/public/redaktionsrezept_images/backprofi_buschenschank-brot-aufgeschnitten-web.jpg?itok=qitmNXqG'

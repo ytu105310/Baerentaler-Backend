@@ -5,7 +5,7 @@ const mongoDB = require('./mongo');
 
 var bodyParser = require("body-parser");
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('Connection works!'));
