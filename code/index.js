@@ -35,6 +35,12 @@ app.get('/carbonSavings', (req, res) => {
     return res;
 });
 
+app.get('/products/:producerId', (req, res) => {
+    var producerId = req.params.producerId;
+    res = mongoDB.findProductsByProducerId(req, res, producerId);
+    return res;
+});
+
 var server = app.listen(port, function () {
     var port = server.address().port;
     console.log("Express is working on port " + port);

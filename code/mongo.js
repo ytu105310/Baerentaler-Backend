@@ -96,6 +96,14 @@ findCarbonSavings = function (req, res) {
     });
 };
 
+findProductsByProducerId = function (req, res, producerId) {
+    db.collection('products', function (err, collection) {
+        collection.find({}).toArray(function (err, items) {
+            res.send(items);
+        });
+    });
+}
+
 /* 
 exports.addWine = function(req, res) {
     var wine = req.body;
@@ -304,3 +312,4 @@ module.exports.findAllAbos = findAllAbos;
 module.exports.findAllProducts = findAllProducts;
 module.exports.findAllTransactions = findAllTransactions;
 module.exports.findCarbonSavings = findCarbonSavings;
+module.exports.findProductsByProducerId = findProductsByProducerId;
