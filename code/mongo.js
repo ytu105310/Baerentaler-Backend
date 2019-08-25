@@ -212,7 +212,7 @@ var generateTransactions = function () {
         {
             title: 'August', data: [{
                 name: 'Orangenblütenhonig',
-                producer: 'Franziska Herbstberger',
+                producer: 'Lia Klein',
                 balanceDifference: -8,
                 date: '24.08.2019',
             }, {
@@ -230,7 +230,7 @@ var generateTransactions = function () {
         {
             title: 'Juli', data: [{
                 name: 'Aprikosen',
-                producer: 'Maximilian Kleinbuchser',
+                producer: 'Maximilian Buchs',
                 balanceDifference: -16,
                 date: '28.07.2019',
             }, {
