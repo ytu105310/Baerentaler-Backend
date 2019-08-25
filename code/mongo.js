@@ -188,7 +188,7 @@ var generateAbos = function () {
     {
         name: 'Eier',
         producer: 'Miriam Schmid, Bern',
-        price: '2BT for 2',
+        price: '1BT pro Stück',
         everyXthWeek: '2',
         amount: '20g',
     },
@@ -215,7 +215,7 @@ var generateProducts = function () {
     {
         name: 'Eier',
         producer: 'Miriam Schmid, Bern',
-        price: '2BT for 2',
+        price: '1BT pro Stück',
         imageUrl: 'https://img.utopia.de/dMHQXBCqXgwwiHdDAers9jDua_0=/640x300/https://utopia.de/app/uploads/2019/03/eier-kaufberatung-wsiraphol1603181280x720.jpg'
     },
     {
