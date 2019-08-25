@@ -1,10 +1,10 @@
 # Project Title
 
-BärnHäckt BEKB Challange
+BärnHäckt BärenBatzen
 
 ## Description
 
-TBD
+Our solution to the BEKB challenge
 
 ## Getting Started
 
@@ -17,8 +17,7 @@ TBD
 ### Installing
 
 ```
-npm init
-npm install express -g
+cd code
 npm install
 ```
 

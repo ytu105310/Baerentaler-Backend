@@ -1,9 +1,9 @@
 {
   "name": "baerentaler-backend",
   "version": "1.0.0",
-  "main": "code/index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node code/index.js",
+    "start": "node index.js",
     "test": "echo \"No test specified\" && exit 1"
   },
   "keywords": [],
