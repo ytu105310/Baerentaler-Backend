@@ -36,6 +36,13 @@ db.open(function (err, db) {
                 generateTransactions();
             }
         });
+
+        db.collection('carbonSavings', { strict: true }, function (err, collection) {
+            if (err) {
+                console.log("The 'carbonSavings' collection doesn't exist. Creating it with sample data...");
+                generateCarbonSavings();
+            }
+        });
     }
 });
 
@@ -75,6 +82,14 @@ findAllProducts = function (req, res) {
 
 findAllTransactions = function (req, res) {
     db.collection('transactions', function (err, collection) {
+        collection.find({}).toArray(function (err, items) {
+            res.send(items);
+        });
+    });
+};
+
+findCarbonSavings = function (req, res) {
+    db.collection('carbonSavings', function (err, collection) {
         collection.find({}).toArray(function (err, items) {
             res.send(items);
         });
@@ -252,7 +267,40 @@ var generateTransactions = function () {
     });
 };
 
+var generateCarbonSavings = function () {
+    var carbonSavings = [
+        {
+            month: 'march',
+            savings: 4,
+        },
+        {
+            month: 'april',
+            savings: 3,
+        },
+        {
+            month: 'may',
+            savings: 5,
+        },
+        {
+            month: 'june',
+            savings: 6,
+        },
+        {
+            month: 'july',
+            savings: 5,
+        },
+        {
+            month: 'august',
+            savings: 7,
+        },
+    ];
+    db.collection('carbonSavings', function (err, collection) {
+        collection.insert(carbonSavings, { safe: true }, function (err, result) { });
+    });
+};
+
 module.exports.findAllUsers = findAllUsers;
 module.exports.findAllAbos = findAllAbos;
 module.exports.findAllProducts = findAllProducts;
 module.exports.findAllTransactions = findAllTransactions;
+module.exports.findCarbonSavings = findCarbonSavings;

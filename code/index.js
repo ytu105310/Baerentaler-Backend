@@ -30,6 +30,11 @@ app.get('/transactions', (req, res) => {
     return res;
 });
 
+app.get('/carbonSavings', (req, res) => {
+    res = mongoDB.findCarbonSavings(req, res);
+    return res;
+});
+
 var server = app.listen(port, function () {
     var port = server.address().port;
     console.log("Express is working on port " + port);
