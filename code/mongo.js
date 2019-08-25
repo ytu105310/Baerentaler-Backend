@@ -221,11 +221,40 @@ var generateProducts = function () {
         imageUrl: 'https://img.utopia.de/dMHQXBCqXgwwiHdDAers9jDua_0=/640x300/https://utopia.de/app/uploads/2019/03/eier-kaufberatung-wsiraphol1603181280x720.jpg'
     },
     {
-        name: 'Brot',
+        name: 'Olivenöl',
+        producerId: '02',
+        producer: 'Miriam Schmid, Bern',
+        price: '17BT pro Liter',
+        imageUrl: 'https://www.reisewort.de/wp-content/uploads/2017/08/Olivenöl-aus-Kroatien-1024x683.jpg'
+    },
+
+    {
+        name: 'Fenchel',
+        producerId: '02',
+        producer: 'Miriam Schmid, Bern',
+        price: '4BT pro Stück',
+        imageUrl: 'https://www.gutekueche.at/img/artikel/1182/fenchelknolle.jpg'
+    },
+    {
+        name: 'Nüsslisalat',
+        producerId: '01',
+        producer: 'Max Knecht, Emmental',
+        price: '3BT pro 100g',
+        imageUrl: 'https://www.bauernzeitung.ch/media/14460/csm_3396_nuessler_pd_059d41fe4e.jpg?anchor=center&mode=crop&width=750&height=420&rnd=132013713070000000'
+    },
+    {
+        name: 'Bauernbrot',
         producerId: '03',
         producer: 'John Doe, Wohlen',
-        price: '3BT pro kg',
+        price: '4BT pro Stück',
         imageUrl: 'https://www.kochenundkueche.com/sites/default/files/styles/medium/public/redaktionsrezept_images/backprofi_buschenschank-brot-aufgeschnitten-web.jpg?itok=qitmNXqG'
+    },
+    {
+        name: 'Baguette',
+        producerId: '03',
+        producer: 'John Doe, Wohlen',
+        price: '3BT pro Stück',
+        imageUrl: 'https://www.daskochrezept.de/sites/default/files/styles/169_xl/public/2017-10/istock-157567837.jpg?h=17ee2a09&itok=aqagA4kw'
     }];
 
     db.collection('products', function (err, collection) {
